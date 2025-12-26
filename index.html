@@ -1,234 +1,224 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خزنة مستر سلطع السرية 🦀💰</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <style>
-        :root {
-            --gold: #d4af37;
-            --money-green: #27ae60;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خزنة الحب السرّية ❤️</title>
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: #0a0a0a;
-            color: white;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-        #lock-screen { text-align: center; z-index: 1000; }
+<style>
+:root{
+  --gold:#ffd36a;
+  --pink:#ff5fa2;
+  --glow:0 0 40px rgba(255,211,106,.6);
+}
 
-        .pass-input {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            padding: 10px;
-            font-size: 20px;
-            text-align: center;
-            border-radius: 10px;
-            outline: none;
-            margin-top: 15px;
-        }
+*{box-sizing:border-box}
 
-        #main-content {
-            display: none;
-            width: 90%;
-            max-width: 600px;
-            text-align: center;
-            padding: 20px;
-        }
+body{
+  margin:0;
+  font-family:'Cairo',sans-serif;
+  background:radial-gradient(circle at top,#1b1b1b,#000);
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
 
-        .vault-door {
-            border: 8px solid var(--gold);
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(#444, #111);
-            box-shadow: 0 0 50px var(--gold);
-            overflow: hidden;
-            animation: rotate-slow 15s linear infinite;
-        }
+/* نجوم */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity:.3;
+  animation:stars 60s linear infinite;
+}
+@keyframes stars{
+  from{background-position:0 0}
+  to{background-position:1000px 1000px}
+}
 
-        @keyframes rotate-slow { 100% { transform: rotate(360deg); } }
+#lock-screen,#main-content{text-align:center;z-index:2}
 
-        .vault-door img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: inherit;
-            animation-direction: reverse;
-        }
+h1{color:var(--gold);text-shadow:var(--glow)}
 
-        .stat-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--gold);
-            margin: 20px 0;
-        }
+.pass-input{
+  background:transparent;
+  border:2px solid var(--gold);
+  padding:12px;
+  border-radius:12px;
+  color:var(--gold);
+  font-size:20px;
+  text-align:center;
+  outline:none;
+}
 
-        .count-up {
-            font-size: 2.5em;
-            color: var(--money-green);
-            font-weight: 900;
-        }
+.btn{
+  margin-top:15px;
+  padding:14px 40px;
+  border:none;
+  border-radius:50px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--gold),#ffefb0);
+  box-shadow:var(--glow);
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.07)}
 
-        .btn-rob {
-            background: var(--gold);
-            color: black;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-            transition: 0.3s;
-        }
+#main-content{display:none;max-width:600px;width:90%}
 
-        /* نافذة الجائزة الجميلة */
-        #prize-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
+.vault{
+  width:220px;height:220px;
+  margin:20px auto;
+  border-radius:50%;
+  border:6px solid var(--gold);
+  box-shadow:0 0 60px var(--gold);
+  overflow:hidden;
+  animation:spin 18s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vault img{width:100%;height:100%;object-fit:cover}
 
-        .modal-content {
-            background: linear-gradient(145deg, #1a1a1a, #000);
-            padding: 40px;
-            border-radius: 30px;
-            border: 3px solid var(--gold);
-            text-align: center;
-            box-shadow: 0 0 100px var(--gold);
-            transform: scale(0.5);
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            max-width: 80%;
-        }
+.stat{
+  margin:25px 0;
+  padding:20px;
+  border-radius:20px;
+  border:1px solid var(--gold);
+  background:rgba(255,255,255,.05);
+}
 
-        @keyframes popIn { 100% { transform: scale(1); } }
+.counter{
+  font-size:2.8em;
+  color:var(--pink);
+  font-weight:900;
+}
 
-        .heart-icon { font-size: 50px; animation: pulse 1s infinite; display: inline-block; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+/* رسالة حب */
+.love-letter{
+  margin-top:25px;
+  font-size:1.2em;
+  line-height:1.8;
+  min-height:120px;
+}
 
-        .prize-text {
-            font-size: 1.8em;
-            color: var(--gold);
-            margin: 20px 0;
-            font-weight: bold;
-            line-height: 1.6;
-        }
-    </style>
+/* نافذة */
+#modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.85);
+  z-index:10;
+}
+.modal-box{
+  background:linear-gradient(145deg,#1a1a1a,#000);
+  padding:40px;
+  border-radius:30px;
+  border:3px solid var(--gold);
+  box-shadow:0 0 100px var(--gold);
+  animation:pop .6s ease forwards;
+  transform:scale(.5);
+}
+@keyframes pop{to{transform:scale(1)}}
+.heart{font-size:60px;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.3)}}
+</style>
 </head>
+
 <body>
 
-    <div id="lock-screen">
-        <h1 style="color: var(--gold)">🔐 خزنة مستر سلطع</h1>
-        <p>أدخلي الرقم السري لفتح الأرباح (2000)</p>
-        <input type="password" id="pass" class="pass-input" placeholder="****">
-        <br><br>
-        <button class="btn-rob" onclick="unlock()">فتح الخزنة</button>
-    </div>
+<div id="lock-screen">
+  <h1>🔐 خزنة الحب</h1>
+  <p>بس إلِك… أدخلي الرقم السري (2000)</p>
+  <input id="pass" type="password" class="pass-input" placeholder="****">
+  <br>
+  <button class="btn" onclick="unlock()">افتحي قلبي ❤️</button>
+</div>
 
-    <div id="main-content">
-        <div class="vault-door">
-            <img src="https://i.ibb.co/DH6zfXVd/IMG-20251227-WA0007.jpg" alt="Master Krabs">
-        </div>
-        
-        <h1>أهلاً يا "سلطوعتي" الغالية ❤️</h1>
-        
-        <div class="stat-box">
-            <p>رصيدك في قلبي منذ عرفتك:</p>
-            <div id="counter" class="count-up">0</div>
-            <p>مليون نبضة حب</p>
-        </div>
+<div id="main-content">
+  <div class="vault">
+    <img src="https://i.ibb.co/DH6zfXVd/IMG-20251227-WA0007.jpg">
+  </div>
 
-        <button class="btn-rob" onclick="winPrize()">اسحبي الجائزة الكبرى 💰</button>
-    </div>
+  <h1>أهلًا يا أجمل نعمة بحياتي 💖</h1>
 
-    <div id="prize-modal">
-        <div class="modal-content">
-            <span class="heart-icon">💝</span>
-            <div class="prize-text">
-                مبروك يا "مستر سلطع" حياتي!<br>
-                لقد فزتِ بـ حب أبدي ودلع لا ينتهي..<br>
-                <span style="color: #fff; font-size: 0.8em;">"أحبك يا أغلى من كل كنوز قاع الهامور!"</span>
-            </div>
-            <button class="btn-rob" style="padding: 10px 30px;" onclick="closeModal()">إغلاق الخزنة</button>
-        </div>
-    </div>
+  <div class="stat">
+    <p>رصيد حبك عندي:</p>
+    <div id="counter" class="counter">0</div>
+    <p>نبضة… ولسه العد مستمر</p>
+  </div>
 
-    <script>
-        function unlock() {
-            const pass = document.getElementById('pass').value;
-            if(pass === '2000') {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                startCounter();
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-            } else {
-                alert('خطأ! مستر سلطع لا يسمح للدخلاء!');
-            }
-        }
+  <div id="letter" class="love-letter"></div>
 
-        function startCounter() {
-            let count = 0;
-            const el = document.getElementById('counter');
-            setInterval(() => {
-                count += Math.floor(Math.random() * 20);
-                el.innerText = count.toLocaleString();
-            }, 100);
-        }
+  <button class="btn" onclick="win()">استلمي الجائزة 🎁</button>
+</div>
 
-        function winPrize() {
-            // إظهار النافذة
-            document.getElementById('prize-modal').style.display = 'flex';
-            
-            // صوت العملات
-            const context = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = context.createOscillator();
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(880, context.currentTime);
-            const gain = context.createGain();
-            oscillator.connect(gain);
-            gain.connect(context.destination);
-            oscillator.start();
-            gain.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.5);
+<div id="modal">
+  <div class="modal-box">
+    <div class="heart">💝</div>
+    <h2>الجائزة الكبرى</h2>
+    <p>
+      حب صادق لا يصدأ<br>
+      أمان، ضحكة، وكتف دايمًا موجود<br>
+      <strong>أنا… بكل ما فيني ❤️</strong>
+    </p>
+    <button class="btn" onclick="closeModal()">سكر الخزنة</button>
+  </div>
+</div>
 
-            // ألعاب نارية مكثفة
-            var duration = 5 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 3000 };
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7c3c80b4ff.mp3">
+</audio>
 
-            function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+<script>
+function unlock(){
+  if(pass.value==="2000"){
+    lock-screen.style.display="none";
+    main-content.style.display="block";
+    music.play();
+    startCounter();
+    typeLove();
+    confetti({particleCount:150,spread:120});
+  }else alert("القلب ما بيفتح إلا لإلِك 😉");
+}
 
-            var interval = setInterval(function() {
-                var timeLeft = animationEnd - Date.now();
-                if (timeLeft <= 0) { return clearInterval(interval); }
-                var particleCount = 50 * (timeLeft / duration);
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
-        }
+let c=0;
+function startCounter(){
+  setInterval(()=>{
+    c+=Math.floor(Math.random()*50);
+    counter.innerText=c.toLocaleString();
+  },120);
+}
 
-        function closeModal() {
-            document.getElementById('prize-modal').style.display = 'none';
-        }
-    </script>
+const text="من أول مرة شفتك وأنا حاسس إنك مو شخص عادي… إنتي أمان، دفى، وسبب ابتسامة. هاي الصفحة مش كود… هاي قلبي مكتوب بلغة بحبك 🤍";
+let i=0;
+function typeLove(){
+  if(i<text.length){
+    letter.innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeLove,50);
+  }
+}
+
+function win(){
+  modal.style.display="flex";
+  let end=Date.now()+4000;
+  let t=setInterval(()=>{
+    confetti({particleCount:40,spread:360});
+    if(Date.now()>end)clearInterval(t);
+  },250);
+}
+
+function closeModal(){modal.style.display="none";}
+</script>
+
 </body>
 </html>
