@@ -180,15 +180,22 @@ h1{color:var(--gold);text-shadow:var(--glow)}
 
 <script>
 function unlock(){
-  if(pass.value==="2000"){
-    lock-screen.style.display="none";
-    main-content.style.display="block";
-    music.play();
+  const passInput = document.getElementById("pass").value;
+
+  if(passInput === "2000"){
+    document.getElementById("lock-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+
+    document.getElementById("music").play();
     startCounter();
     typeLove();
-    confetti({particleCount:150,spread:120});
-  }else alert("القلب ما بيفتح إلا لإلِك 😉");
+
+    confetti({ particleCount: 150, spread: 120 });
+  } else {
+    alert("القلب ما بيفتح إلا لإلِك 😉");
+  }
 }
+
 
 let c=0;
 function startCounter(){
@@ -222,3 +229,4 @@ function closeModal(){modal.style.display="none";}
 
 </body>
 </html>
+
