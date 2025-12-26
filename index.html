@@ -108,7 +108,7 @@
 
     <div id="lock-screen">
         <h1 style="color: var(--gold)">🔐 خزنة مستر سلطع</h1>
-        <p>أدخلي الرقم السري لفتح الأرباح (1999)</p>
+        <p>أدخلي الرقم السري لفتح الأرباح (2000)</p>
         <input type="password" id="pass" class="pass-input" placeholder="****">
         <br><br>
         <button class="btn-rob" onclick="unlock()">فتح الخزنة</button>
@@ -141,7 +141,7 @@
         // دالة فتح الموقع
         function unlock() {
             const pass = document.getElementById('pass').value;
-            if(pass === '1999') {
+            if(pass === '2000') {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
                 startCounter();
@@ -186,3 +186,4 @@
 </body>
 
 </html>
+
