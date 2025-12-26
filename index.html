@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خزنة مستر سلطع السرية 🦀💰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-red: #8b0000;
+            --money-green: #27ae60;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* شاشة القفل */
+        #lock-screen {
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .pass-input {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        /* المحتوى الرئيسي */
+        #main-content {
+            display: none;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .vault-door {
+            border: 8px solid var(--gold);
+            padding: 30px;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(#444, #111);
+            box-shadow: 0 0 50px var(--gold);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--gold);
+            margin: 20px 0;
+        }
+
+        .count-up {
+            font-size: 2em;
+            color: var(--money-green);
+            font-weight: 900;
+        }
+
+        .btn-rob {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-rob:active { transform: scale(0.95); }
+
+        .hidden-msg {
+            font-style: italic;
+            color: #aaa;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <h1 style="color: var(--gold)">🔐 خزنة مستر سلطع</h1>
+        <p>أدخلي الرقم السري لفتح الأرباح (1999)</p>
+        <input type="password" id="pass" class="pass-input" placeholder="****">
+        <br><br>
+        <button class="btn-rob" onclick="unlock()">فتح الخزنة</button>
+    </div>
+
+    <div id="main-content">
+        <div class="vault-door">
+            <h2 style="color: var(--gold); transform: rotate(-360deg);">🦀</h2>
+        </div>
+        
+        <h1>أهلاً يا "سلطوعتي" الغالية ❤️</h1>
+        
+        <div class="stat-box">
+            <p>رصيدك في قلبي منذ عرفتك:</p>
+            <div id="counter" class="count-up">0</div>
+            <p>مليون نبضة حب</p>
+        </div>
+
+        <div class="card" style="background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: right;">
+            <h3 style="color: var(--gold)">📌 تقرير الاستثمار:</h3>
+            <p>• <b>نسبة البخل:</b> 0% (دايماً كريمة بجمالك)</p>
+            <p>• <b>نسبة العناد:</b> 100% (أطلق مستر سلطع)</p>
+            <p>• <b>قيمة الأصول:</b> لا تقدر بثمن</p>
+        </div>
+
+        <button class="btn-rob" style="margin-top: 30px;" onclick="winPrize()">اسحبي الجائزة الكبرى 💰</button>
+        <p id="final-msg" class="hidden-msg">"أحبك يا أغلى من كل كنوز قاع الهامور!"</p>
+    </div>
+
+    <script>
+        // دالة فتح الموقع
+        function unlock() {
+            const pass = document.getElementById('pass').value;
+            if(pass === '1999') {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                startCounter();
+                confetti();
+            } else {
+                alert('خطأ! مستر سلطع لا يسمح للدخلاء!');
+            }
+        }
+
+        // عداد الحب
+        function startCounter() {
+            let count = 0;
+            const el = document.getElementById('counter');
+            setInterval(() => {
+                count += Math.floor(Math.random() * 10);
+                el.innerText = count.toLocaleString();
+            }, 100);
+        }
+
+        // جائزة النهاية
+        function winPrize() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#d4af37', '#27ae60', '#ff0000']
+            });
+            document.getElementById('final-msg').style.display = 'block';
+            
+            // إضافة صوت عملات افتراضي (برمجياً)
+            const context = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = context.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(880, context.currentTime);
+            const gain = context.createGain();
+            oscillator.connect(gain);
+            gain.connect(context.destination);
+            oscillator.start();
+            gain.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.5);
+        }
+    </script>
+</body>
+</html>
